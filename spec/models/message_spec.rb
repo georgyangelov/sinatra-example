@@ -21,4 +21,18 @@ RSpec.describe Message do
       expect(message).to be_anonymous
     end
   end
+
+  describe '#display_name' do
+    it 'returns `Анонимен` for anonymous messages' do
+      message = create :message, user_name: nil
+
+      expect(message.display_name).to eq 'Анонимен'
+    end
+
+    it 'returns the user name if present' do
+      message = create :message, user_name: 'John'
+
+      expect(message.display_name).to eq 'John'
+    end
+  end
 end
