@@ -1,1 +1,41 @@
-Хелоу :)
+<h1>Книга за гости</h1>
+
+<% if flash[:success] %>
+    <p class="bg-success"><%= flash[:success] %></p>
+<% end %>
+
+<% if flash[:error] %>
+    <p class="bg-danger"><%= flash[:error] %></p>
+<% end %>
+
+<form method="post" action="/message">
+    <div class="form-group">
+        <label for="user-name-input">Кой си ти?</label>
+        <input id="user-name-input"
+               class="form-control"
+               name="user_name"
+               type="text"
+               placeholder="Име (опционално)">
+    </div>
+    <div class="form-group">
+        <label for="text-input">Какво искаш да ни кажеш?</label>
+        <textarea id="text-input"
+                  class="form-control"
+                  name="text"
+                  placeholder="Напиши нещо"
+                  required></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-default">Изпращане</button>
+</form>
+
+<h2>Съществуващи мнения:</h2>
+
+<% if @messages.empty? %>
+    В момента няма такива. Бъди първия, който ще ни пише!
+<% end %>
+<% @messages.each do |message| %>
+    <p>
+        <strong><%= message.display_name %></strong>: <%= message.text %>
+    </p>
+<% end %>

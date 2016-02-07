@@ -4,6 +4,9 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'sinatra-activerecord'
 
+# Used for messages that are shown once such as error messages and notices
+gem 'sinatra-flash'
+
 gem 'rake'
 
 gem 'sqlite3'
