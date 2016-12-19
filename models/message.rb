@@ -1,5 +1,5 @@
 class Message < ActiveRecord::Base
-  validates_presence_of :text
+  validates :text, presence: true, length: {minimum: 10, maximum: 120}
 
   def anonymous?
     !user_name or user_name.empty?

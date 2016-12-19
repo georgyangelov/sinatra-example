@@ -10,7 +10,7 @@ post '/message' do
   if message.save
     flash[:success] = 'Съобщението беше записано успешно. Благодарим!'
   else
-    flash[:error] = 'Съобщението съдържа грешки. Попълни ли полето за текст?'
+    flash[:error] = "Съобщението съдържа грешки: #{message.errors.full_messages.to_sentence}"
   end
 
   redirect '/'
